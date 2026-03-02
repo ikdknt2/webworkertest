@@ -16,6 +16,7 @@
 
     <script src="cstimer_module.js"></script>
     <script>
+        worker.postmessage('333')
         cstimerWorker.getScramble('333').then(function(scrambleStr) {
             alert('Scramble:', scrambleStr);
             
