@@ -40,19 +40,19 @@ var cstimerWorker = (function() {
 
 
 
-console.log('Generate scramble for 3x3x3');
+alert('Generate scramble for 3x3x3');
 
 var scrStr = "";
 var queue = cstimerWorker.getScramble('333').then(function(_scrStr) {
 	scrStr = _scrStr;
-	console.log('Scramble generated: ', scrStr);
+    alert('Scramble generated: ', scrStr);
 	return cstimerWorker.getImage(scrStr, '333');
     .catch(function(error) {
     console.error('Error:', error);
     document.getElementById('output').innerHTML = 'Error: ' + error.message;
 });
 }).then(function(svgImage) {
-	console.log('Scramble image[0, 100): ', svgImage.slice(0, 100));
+	alert('Scramble image[0, 100): ', svgImage.slice(0, 100));
 });
 
 var wca_events = [
