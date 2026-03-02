@@ -17,7 +17,7 @@
     <script src="cstimer_module.js"></script>
     <script>
         cstimerWorker.getScramble('333').then(function(scrambleStr) {
-            console.log('Scramble:', scrambleStr);
+            alert('Scramble:', scrambleStr);
             
             // Display on page
             var div = document.createElement('div');
@@ -27,7 +27,7 @@
             
             return cstimerWorker.getImage(scrambleStr, '333');
         }).then(function(svgImage) {
-            console.log('Image generated');
+            alert('Image generated');
             
             // Display image on page
             var div = document.createElement('div');
