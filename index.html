@@ -2,21 +2,37 @@
 <html>
 <head>
     <title>Cube Scramble Generator</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .result { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        .scramble { font-weight: bold; color: blue; }
+        svg { max-width: 200px; }
+    </style>
 </head>
 <body>
-    <div id="scrambleDisplay"></div>
-    <div id="imageDisplay"></div>
+    <h1>Cube Scramble Generator</h1>
+    <div id="output"></div>
 
     <script src="webw.js"></script>
     <script>
-        // Your existing code already runs and logs to console
-        // To display it on the page instead:
-        
         cstimerWorker.getScramble('333').then(function(scrambleStr) {
-            document.getElementById('scrambleDisplay').textContent = 'Scramble: ' + scrambleStr;
+            console.log('Scramble:', scrambleStr);
+            
+            // Display on page
+            var div = document.createElement('div');
+            div.className = 'result';
+            div.innerHTML = '<div class="scramble">3x3x3 Scramble:</div>' + scrambleStr;
+            document.getElementById('output').appendChild(div);
+            
             return cstimerWorker.getImage(scrambleStr, '333');
         }).then(function(svgImage) {
-            document.getElementById('imageDisplay').innerHTML = svgImage;
+            console.log('Image generated');
+            
+            // Display image on page
+            var div = document.createElement('div');
+            div.className = 'result';
+            div.innerHTML = svgImage;
+            document.getElementById('output').appendChild(div);
         });
     </script>
 </body>
