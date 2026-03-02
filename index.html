@@ -1,4 +1,4 @@
-<!DO,CTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Cube Scramble Generator</title>
@@ -6,6 +6,7 @@
         body { font-family: Arial; padding: 20px; }
         .result { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
         .scramble { font-weight: bold; color: blue; }
+        .error { color: red; font-weight: bold; }
         svg { max-width: 200px; }
     </style>
 </head>
@@ -13,7 +14,7 @@
     <h1>Cube Scramble Generator</h1>
     <div id="output"></div>
 
-    <script src="cstimer_module.js.js"></script>
+    <script src="cstimer_module.js"></script>
     <script>
         cstimerWorker.getScramble('333').then(function(scrambleStr) {
             console.log('Scramble:', scrambleStr);
@@ -32,6 +33,14 @@
             var div = document.createElement('div');
             div.className = 'result';
             div.innerHTML = svgImage;
+            document.getElementById('output').appendChild(div);
+        }).catch(function(error) {
+            console.error('Error:', error);
+            
+            // Display error on page
+            var div = document.createElement('div');
+            div.className = 'result error';
+            div.innerHTML = 'Error: ' + (error.message || error);
             document.getElementById('output').appendChild(div);
         });
     </script>
