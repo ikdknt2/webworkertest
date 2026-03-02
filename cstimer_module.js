@@ -47,6 +47,10 @@ var queue = cstimerWorker.getScramble('333').then(function(_scrStr) {
 	scrStr = _scrStr;
 	console.log('Scramble generated: ', scrStr);
 	return cstimerWorker.getImage(scrStr, '333');
+    .catch(function(error) {
+    console.error('Error:', error);
+    document.getElementById('output').innerHTML = 'Error: ' + error.message;
+});
 }).then(function(svgImage) {
 	console.log('Scramble image[0, 100): ', svgImage.slice(0, 100));
 });
