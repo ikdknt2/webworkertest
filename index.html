@@ -1,6 +1,23 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cube Scramble Generator</title>
+</head>
 <body>
-  <script src="webw.js"></script>
-<h1>aa</h1>
-webw.js
+    <div id="scrambleDisplay"></div>
+    <div id="imageDisplay"></div>
+
+    <script src="webw.js"></script>
+    <script>
+        // Your existing code already runs and logs to console
+        // To display it on the page instead:
+        
+        cstimerWorker.getScramble('333').then(function(scrambleStr) {
+            document.getElementById('scrambleDisplay').textContent = 'Scramble: ' + scrambleStr;
+            return cstimerWorker.getImage(scrambleStr, '333');
+        }).then(function(svgImage) {
+            document.getElementById('imageDisplay').innerHTML = svgImage;
+        });
+    </script>
 </body>
+</html>
